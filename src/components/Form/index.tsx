@@ -45,7 +45,7 @@ export function Form({ feedbackType }: Props) {
           onRemoveShot={() => {}}
           screenshot=""
         />
-        <Button isLoading={false}/>
+        <Button isLoading={false} />
       </View>
     </View>
   );

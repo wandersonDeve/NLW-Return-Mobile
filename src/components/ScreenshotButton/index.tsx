@@ -11,27 +11,32 @@ interface Props {
   onRemoveShot: () => void;
 }
 
-export function ScreenshotButton({ screenshot, onTakeShot, onRemoveShot }: Props) {
+export function ScreenshotButton({
+  screenshot,
+  onTakeShot,
+  onRemoveShot,
+}: Props) {
   return (
-  <TouchableOpacity 
-  style={styles.container}
-  onPress={screenshot ? onRemoveShot : onTakeShot}
-  >
-      {screenshot
-      ?
-    <Trash
-    size={22}
-    color={theme.colors.text_secondary}
-    weight="fill"
-    style={styles.removeIcon}
-    />
-    :
-    <Camera
-    size={24}
-    color={theme.colors.text_primary}
-    weight="bold"
-    />
-    }
-  </TouchableOpacity>
-  )
+    <TouchableOpacity
+      style={styles.container}
+      onPress={screenshot ? onRemoveShot : onTakeShot}
+    >
+      {screenshot ? (
+        <View>
+          <Image
+          style={styles.image}
+          source={{uri: screenshot}}
+          />
+          <Trash
+            size={22}
+            color={theme.colors.text_secondary}
+            weight="fill"
+            style={styles.removeIcon}
+          />
+        </View>
+      ) : (
+        <Camera size={24} color={theme.colors.text_primary} weight="bold" />
+      )}
+    </TouchableOpacity>
+  );
 }
